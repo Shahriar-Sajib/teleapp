@@ -28,7 +28,8 @@
   showLoaderOnConfirm: true,
   preConfirm: async (login) => {
     if(login.length>6){
-      tg.setItem("userReferCode",login);
+        alerts("hhhh")
+     // tg.setItem("userReferCode",login);
      // localStorage.setItem("userReferCode",login);
       tg.showAlert(tg.getItem("userReferCode"));
    //   tg.showConfirm("hhhhhh");
