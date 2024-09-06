@@ -77,4 +77,4 @@ const deleteMessage = async (chatId, messageId) => {
 };
 
 // Poll for updates every 3 seconds
-setInterval(getUpdates, 1000);
+setInterval(getUpdates, 3000);
