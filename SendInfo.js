@@ -1,6 +1,6 @@
 const botToken = '7229842427:AAHpGOEpOmr3G_DNL04JpxROEohyFwa-dXI';
 const myText ="User Id and Refer Code :"+localStorage.getItem("userId")
-function hh() {
+function showInfo() {
   if (localStorage.getItem("userId") != null) {
     fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: 'POST',
