@@ -1,0 +1,136 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  color: lightcyan;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('/bg.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.coins,
+.diamonds {
+  text-align: center;
+}
+
+.title-for-tasks{
+  font-weight: 300;
+}
+
+
+.coins h2,
+.diamonds h2 {
+  margin: 5px 0;
+  font-weight: 300;
+}
+
+button,#get {
+  background-color: lightcyan;
+  color: purple;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid whitesmoke;
+}
+
+button:hover {
+  background-color: transparent;
+}
+
+.offers {
+  width: 300px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  height: 100hv;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.offers-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #FF6E40;
+  padding-bottom: 10px;
+}
+
+.offers-body {
+  padding: 10px;
+}
+
+.parents{
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  background-color:transparent;
+  border: 1px solid floralwhite;
+  padding: 2px;
+  border-radius: 4px;
+}
+#watchAds,#get{
+  padding: 0px;
+  background-color: transparent;
+}
+
+a{
+  text-decoration: none;
+  color: purple;
+}
+
+#get{
+  padding: 7px;
+}
+
+#code{
+  width: 150px;
+  border: 1px solid #FF6E40;
+  background-color: transparent;
+  border-radius: 7px;
+  color: whitesmoke;
+  text-align: center;
+}
+#code::placeholder{
+  color: whitesmoke;
+}
+#code:focus{
+  outline: none;
+}
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
