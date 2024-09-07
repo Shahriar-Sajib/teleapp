@@ -1,7 +1,7 @@
 const botToken = '7229842427:AAHpGOEpOmr3G_DNL04JpxROEohyFwa-dXI';
-const myText ="User Id and Refer Code :"+localStorage.getItem("userId") +"More Info will be here soon!";
+const myText ="User Id and Refer Code :"+localStorage.getItem("userId")+"More Info will be here soon!";
 function showInfo() {
-  tg.a
+  tg.showAlert(myText)
   // if (localStorage.getItem("userId") != null) {
 //     tg.showAlert("Check the bot")
 //     fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
