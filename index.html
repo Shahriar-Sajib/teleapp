@@ -1,48 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  
+  
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
- 
-    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    
-    <title>Hello World</title>
+  <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+  
+  
+  
+  <title>Dashboard</title>
+  
 </head>
+
+
+
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is a simple HTML file Pages!</p>
-
-       <script>
-           let tg = window.Telegram.WebApp;
-           tg.showAlert(String(tg.initDataUnsafe.user.id))
-           tg.showAlert(String(tg.initDataUnsafe.user.username))
-           //let tgid = String(tg.initDataUnsafe.user.id)
-         //  tg.initDataUnsafe.sendMessage("Hey Hello dear😁😁😁")
-
-  Swal.fire({
-  title: "Submit your Refer Code",
-  input: "number",
-  inputAttributes: {
-    autocapitalize: "off"
-  },
-  confirmButtonText: "Look up",
-  showLoaderOnConfirm: true,
-  preConfirm: async (login) => {
-    if(login.length){
-        alert("newwww")
-     // tg.setItem("userReferCode",login);
-     // localStorage.setItem("userReferCode",login);
-      //tg.showAlert(tg.getItem("userReferCode"));
-   //   tg.showConfirm("hhhhhh");
-    }else{
-      tg.close()
-    }
-  },
-  allowOutsideClick: () => Swal.isLoading()
-})
-</script>
-     <script src="Bot.js" type="text/javascript" charset="utf-8"></script>
+  <div class="container">
+    <div class="header">
+      <div class="coins">
+        <p>My Coins</p>
+        <h2 id="coinPoinst">0</h2>
+        <button onclick="claim()">Swap</button>
+      </div>
+      <div class="diamonds">
+        <p>My NOT coins</p>
+        <h2 id="notCoins">0</h2>
+        <button onclick="claim()">Withdraw</button>
+      </div>
+    </div>
+    
+    <div class="offers">
+      <div class="offers-header">
+        <p>Offers</p>
+      </div>
+      <div class="offers-body">
+        <h3 class="title-for-tasks">Spin (with ads)</h3>
+        <div class="parents">
+          <icon style="font-size:1.85rem;">📀</icon>
+          <a href="spin.html">You have <span id="spinNumber">0</span> spin
+            <br> <span style="font-size:10px">Watch more <span id="adsLeft1">6</span> ads to get 3 spins </span>
+          </a>
+          <button id="watchAds" onclick="watchAdsSpin()">Watch Ads</button>
+        </div>
+        
+        
+        <h3 class="title-for-tasks"> Daily(with ads) </h3>
+        <div class="parents">
+          <icon style="font-size:1.85rem;">📀</icon>
+          <h4 style="font-weight:300">You have <span id="adsLeft">25</span> times left
+            <br> <span style="font-size:10px"> You can watch daily 25 ads </span>
+          </h4>
+          <button id="watchAds" onclick="watchAdsDaily()">Get 100+</button>
+        </div>
+        
+        <h3 class="title-for-tasks">Secret Code(No ads)</h3>
+        <div class="parents">
+          <a href="" id="get">coming...</a>
+          <input type="text" id="code" placeholder="Enter the code">
+          <button style="padding:7px" id="check" onclick="checkCode()">Check</button>
+        </div>
+        
+        
+        
+        <p>More High-value offers are coming soon!</p>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <button onclick="showInfo()">My Dashboard</button>
+      <button><a href="spin.html">Do Spin</a></button>
+    </div>
+  </div>
+  
+  
+  <script>
+   // const AdController = window.Adsgram.init({ blockId: "your-block-id" });
+    let tg = window.Telegram.WebApp;
+    localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
+   if(localStorage.getItem("referedCode")==null){
+    Swal.fire({
+      title: "Submit your Refer Code",
+      input: "number",
+      inputAttributes: {
+        autocapitalize: "off"
+      },
+      confirmButtonText: "Look up",
+      showLoaderOnConfirm: true,
+      preConfirm: async (login) => {
+        if(login.length>6){
+          localStorage.setItem("referedCode",login)
+          tg.showAlert(login)
+        }else{
+          tg.close()
+        }
+      },
+    allowOutsideClick: () => Swal.isLoading()
+  })
+ }
+  </script>
+  <script src="SendInfo.js" type="text/javascript" charset="utf-8"></script>
+  <script src="Registration.js" type="text/javascript" charset="utf-8"></script>
+  <script src="index.js"></script>
+    <script src="Bot.js"></script>
 </body>
+
 </html>
