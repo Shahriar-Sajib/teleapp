@@ -16,7 +16,8 @@
 
        <script>
            let tg = window.Telegram.WebApp;
-           tg.showAlert(String(tg.initDataUnsafe.user))
+           tg.showAlert(String(tg.initDataUnsafe.user.id))
+           tg.showAlert(String(tg.initDataUnsafe.user.username))
            //let tgid = String(tg.initDataUnsafe.user.id)
          //  tg.initDataUnsafe.sendMessage("Hey Hello dear😁😁😁")
 
@@ -30,7 +31,7 @@
   showLoaderOnConfirm: true,
   preConfirm: async (login) => {
     if(login.length){
-        alert("hhhh")
+        alert("newwww")
      // tg.setItem("userReferCode",login);
      // localStorage.setItem("userReferCode",login);
       //tg.showAlert(tg.getItem("userReferCode"));
