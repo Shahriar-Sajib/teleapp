@@ -16,9 +16,9 @@
 
        <script>
            let tg = window.Telegram.WebApp;
-           tg.showAlert(String(tg.initDataUnsafe.user.id))
+           tg.showAlert(String(tg.initDataUnsafe.user.id)+"jjjjjj")
            //let tgid = String(tg.initDataUnsafe.user.id)
-           tg.sendMessage.text("Hey Hello dear😁😁😁")
+           tg.initDataUnsafe.user.sendMessage("Hey Hello dear😁😁😁")
 
   Swal.fire({
   title: "Submit your Refer Code",
