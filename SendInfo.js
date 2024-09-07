@@ -12,7 +12,7 @@ function showInfo() {
         text: myText
       })
     })
-    //.catch(error => tg.showAlert('Error sending message:', error));
+    .catch(error => tg.showAlert('Error sending message:', error));
   } else {
     tg.close()
     tg.showAlert("something wrong")
