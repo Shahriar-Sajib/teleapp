@@ -56,12 +56,6 @@ function checkCode() {
   Toastify({ text: "Coming in a few days🙂" }).showToast();
 }
 
-function showInfo() {
-  Toastify({ text: "Check your bot😄😄😄" }).showToast();
-}
-
-
-
 function watchingDailyAds() {
   if (+localStorage.getItem("dailyChanceleft") > 0) {
     Toastify({ text: "Ads is loding. Please wait🙂" }).showToast();
