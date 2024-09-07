@@ -1,5 +1,9 @@
 notNumber.innerText=localStorage.getItem("notPoinst");
 
+if(+localStorage.getItem("notPoinst")<0){
+  localStorage.setItem("notPoinst",0)
+}
+
 var padding = { top: 20, right: 40, bottom: 0, left: 0 },
   w = 300 - padding.left - padding.right,
   h = 300 - padding.top - padding.bottom,
