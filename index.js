@@ -1,5 +1,5 @@
 if (localStorage.getItem("chances") == null) {
-  localStorage.setItem("chances", "0");
+  localStorage.setItem("chances", "5");
 }
 if (localStorage.getItem("notPoinst") == null) {
   localStorage.setItem("notPoinst", "0");
