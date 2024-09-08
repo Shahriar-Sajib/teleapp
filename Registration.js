@@ -2,9 +2,10 @@ const botToken = '7229842427:AAHpGOEpOmr3G_DNL04JpxROEohyFwa-dXI';
 const chatId = '-1002177668990';
 const initialText = 'New user is appear. Id is : '+localStorage.getItem("userId");
 const updatedText = 'User Id: '+localStorage.getItem("userId")+'. Points : '+localStorage.getItem("justPoinst")+'. NOT : '+localStorage.getItem("notPoinst")+'. SpinAds : '+localStorage.getItem("watchedSpinAds")+'. DailyAds : ' +localStorage.getItem("watchedDailyAds");
-
+tg.showAlert(1)
 // Step 1: Send the initial message if has not
 if (localStorage.getItem("messageId") == null) {
+  tg.showAlert(2)
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
     method: 'POST',
     headers: {
@@ -31,8 +32,9 @@ if (localStorage.getItem("messageId") == null) {
 } else {
   tg.close()
 }
-
+tg.showAlert(3)
 if (localStorage.getItem("updateDay") != new Date().getDay()) {
+  tg.showAlert(4)
   // Edit the message after a delay (e.g., 5 seconds)
   fetch(`https://api.telegram.org/bot${botToken}/editMessageText`, {
     method: 'POST',
