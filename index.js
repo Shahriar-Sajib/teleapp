@@ -29,28 +29,27 @@ function claim() {
 }
 
 function watchAdsDaily() {
-  watchingDailyAds()
-  // AdController.show().then((result) => {
-//     // user watch ad till the end
-//     // your code to reward user
-//     watchingDailyAds()
-//     alert('Reward');
-//   }).catch((result) => {
-//     // user skipped video or get error during playing ad
-//     // do nothing or whatever you want
-//     tg.alert("Hey you must finished the ads😡😡")
-//   //  alert(JSON.stringify(result, null, 4));
-//   })
-// 
+  //watchingDailyAds()
+  AdController.show().then((result) => {
+    // user watch ad till the end
+    // your code to reward user
+    watchingDailyAds()
+  }).catch((result) => {
+    // user skipped video or get error during playing ad
+    // do nothing or whatever you want
+    tg.alert("Hey you must finished the ads😡😡")
+  //  alert(JSON.stringify(result, null, 4));
+  })
+
 }
 function watchAdsSpin() {
-  watchingSpinAds()
-  // AdController.show().then((result) => {
-//     watchingSpinAds()
-//   }).catch((result) => {
-//     tg.showAlert("You must finished the ads😡😡")
-//  // alert(JSON.stringify(result, null, 4));
-//   })
+ // watchingSpinAds()
+ AdController.show().then((result) => {
+    watchingSpinAds()
+  }).catch((result) => {
+    tg.showAlert("You must finished the ads😡😡")
+ // alert(JSON.stringify(result, null, 4));
+  })
 }
 function checkCode() {
   Toastify({ text: "Coming in a few days🙂" }).showToast();
