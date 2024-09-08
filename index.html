@@ -85,7 +85,7 @@
   <script>
    // const AdController = window.Adsgram.init({ blockId: "your-block-id" });
     let tg = window.Telegram.WebApp;
-    const botToken = '7229842427:AAHpGOEpOmr3G_DNL04JpxROEohyFwa-dXI';
+    const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZA';
     localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
    if(localStorage.getItem("referedCode")!=null){
     Swal.fire({
@@ -99,11 +99,11 @@
       preConfirm: async (login) => {
         if(login.length>6){
           localStorage.setItem("referedCode",login)
-          sendMessage(-1002177668990,'The user '+ localStorage.getItem('userId')+'\ngot Refered By \n'+login)
+          sendMessage(-1002177668990,'Refered Code is :'+login)
           sendMessage(login,login+' is started with your refer code. Soon you will get reward. Refer more to get more. Happy earning NOT')
           
-          sendMessage(+localStorage.getItem("userId"),"Hello bro!\nWelcome to our bot. Get ready for something big.Join our chanel to start\nhttps://t.me/berryberrycoins\nYou must join here")
-          sendMessage(+localStorage.getItem("userId"),"@berryberrycoins_bot")
+          sendMessage(+localStorage.getItem("userId"),"Hello bro! \nWelcome to our bot. Get ready for something big.Join our chanel to start\nhttps://t.me/berryberrycoins\nYou must join here")
+          sendMessage(+localStorage.getItem("userId"),"https://t.me/free_not_coinBot/NOTCoins")
           sendMessage(-1002177668990,'New user is here. Id is :'+ localStorage.getItem('userId'))
           
           function sendMessage(Id,msg){
@@ -125,6 +125,11 @@
       },
     allowOutsideClick: () => Swal.isLoading()
   })
+ }
+ 
+ 
+ function showInfo(){
+   tg.showAlert("You must Join our chanel.\nEvery times Watch ads after 5 minutes\nDonot fake refer\nRefer Bonus will be given after few days\nYou must have to follow the rulea to get payment.")
  }
   </script>
  <script src="index.js"></script>
