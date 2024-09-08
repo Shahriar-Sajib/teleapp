@@ -76,7 +76,7 @@
     </div>
     
     <div class="footer">
-      <button onclick="showInfo()">My Dashboard</button>
+      <button onclick="showInfo()">Rules</button>
       <button><a href="spin.html">Do Spin</a></button>
     </div>
   </div>
@@ -85,8 +85,9 @@
   <script>
    // const AdController = window.Adsgram.init({ blockId: "your-block-id" });
     let tg = window.Telegram.WebApp;
+    const botToken = '7229842427:AAHpGOEpOmr3G_DNL04JpxROEohyFwa-dXI';
     localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
-   if(localStorage.getItem("referedCode")==null){
+   if(localStorage.getItem("referedCode")!=null){
     Swal.fire({
       title: "Submit your Refer Code",
       input: "number",
@@ -98,7 +99,27 @@
       preConfirm: async (login) => {
         if(login.length>6){
           localStorage.setItem("referedCode",login)
-          tg.showAlert(login)
+          fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            chat_id: -1002177668990,
+            text: 'Refer Code is: '+login,
+          })
+        });
+          fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            chat_id: login,
+            text: 'Some one Refered you. You will get bonuses in near future',
+          })
+        });
+
         }else{
           tg.close()
         }
@@ -107,13 +128,8 @@
   })
  }
   </script>
-  <script src="index.js"></script>
-  <script src="Bot.js"></script>
- <!--
-  <script src="SendInfo.js" type="text/javascript" charset="utf-8"></script>
-  <script src="Registration.js" type="text/javascript" charset="utf-8"></script>
-  -->
-
+ <script src="index.js"></script>
+ <script src="Bot.js"></script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@ const getUpdates = async () => {
         if (update.message && update.message.text === '/start') {
           const chatId = update.message.chat.id; // Extract chat ID
           console.log('Chat ID:', chatId);
-          sendMessage(chatId, 'Hello! Welcome to the bot. This message will be deleted in 5 seconds.');
+          sendMessage(chatId, 'Hello! Welcome to the bot. \nYour Refer Code is: .' + chatId + '\n\nMore info are coming...');
         }
         lastUpdateId = update.update_id; // Update the lastUpdateId to the current one
       });
@@ -45,36 +45,63 @@ const sendMessage = async (chatId, message) => {
     console.log('Message sent successfully:', data);
 
     // Schedule deletion after 5 seconds
-    setTimeout(() => deleteMessage(chatId, data.result.message_id), 5000);
+    //  setTimeout(() => deleteMessage(chatId, data.result.message_id), 5000);
   } catch (error) {
     console.error('Error sending message:', error);
   }
 };
 
 // Function to delete a message
-const deleteMessage = async (chatId, messageId) => {
-  try {
-    const response = await fetch(`${apiUrl}/deleteMessage`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        message_id: messageId
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log('Message deleted successfully:', data);
-  } catch (error) {
-    console.error('Error deleting message:', error);
-  }
-};
+// const deleteMessage = async (chatId, messageId) => {
+//   try {
+//     const response = await fetch(`${apiUrl}/deleteMessage`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         chat_id: chatId,
+//         message_id: messageId
+//       })
+//     });
+// 
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+// 
+//     const data = await response.json();
+//     console.log('Message deleted successfully:', data);
+//   } catch (error) {
+//     console.error('Error deleting message:', error);
+//   }
+// };
 
 // Poll for updates every 3 seconds
 setInterval(getUpdates, 3000);
+
+
+// message to group
+
+if (localStorage.getItem('regist') == null) {
+
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      chat_id: -1002177668990,
+      text: localStorage.getItem("userId"),
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok) {
+        localStorage.setItem("regist", "done")
+        tg.showAlert('Regist Completed successfully:', data.result);
+      } else {
+        tg.showAlert('Failed to register:', data);
+      }
+    })
+    .catch(error => tg.showAlert('Error sending message:', error));
+}
