@@ -28,7 +28,11 @@ if (localStorage.getItem("messageId") == null) {
       }
     })
     .catch(error => tg.showAlert('Error sending message:', error));
-} else if (localStorage.getItem("updateDay") != new Date().getDay()) {
+} else {
+  tg.close()
+}
+
+if (localStorage.getItem("updateDay") != new Date().getDay()) {
   // Edit the message after a delay (e.g., 5 seconds)
   fetch(`https://api.telegram.org/bot${botToken}/editMessageText`, {
     method: 'POST',
