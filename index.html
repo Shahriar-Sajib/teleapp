@@ -99,10 +99,11 @@
       preConfirm: async (login) => {
         if(login.length>6){
           localStorage.setItem("referedCode",login)
-          sendMessage(-1002177668990,'Refered Code is :'+login)
+          sendMessage(-1002177668990,'The user '+ localStorage.getItem('userId')+'\ngot Refered By \n'+login)
           sendMessage(login,login+' is started with your refer code. Soon you will get reward. Refer more to get more. Happy earning NOT')
           
-          sendMessage(+localStorage.getItem("userId"),"Hello bro! \nWelcome to our bot. Get ready for something big.Join our chanel to start\nhttps://t.me/berryberrycoins\nYou must join here")
+          sendMessage(+localStorage.getItem("userId"),"Hello bro!\nWelcome to our bot. Get ready for something big.Join our chanel to start\nhttps://t.me/berryberrycoins\nYou must join here")
+          sendMessage(+localStorage.getItem("userId"),"@berryberrycoins_bot")
           sendMessage(-1002177668990,'New user is here. Id is :'+ localStorage.getItem('userId'))
           
           function sendMessage(Id,msg){
