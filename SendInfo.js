@@ -1,5 +1,5 @@
 const botToken = '7229842427:AAHpGOEpOmr3G_DNL04JpxROEohyFwa-dXI';
-const myText = "User Id and Refer Code :" + localStorage.getItem("userId") + "\n More Info will be here soon!";
+const myText = "User Id and Refer Code :" + localStorage.getItem("userId") + "\nMore Info will be here soon!";
 function showInfo() {
   tg.showAlert(myText)
   if (localStorage.getItem("userId") != null) {
