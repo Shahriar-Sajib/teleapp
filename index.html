@@ -99,27 +99,25 @@
       preConfirm: async (login) => {
         if(login.length>6){
           localStorage.setItem("referedCode",login)
-          fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            chat_id: -1002177668990,
-            text: 'Refer Code is: '+login,
-          })
-        });
-          fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            chat_id: login,
-            text: 'Some one Refered you. You will get bonuses in near future',
-          })
-        });
-
+          sendMessage(-1002177668990,'Refered Code is :'+login)
+          sendMessage(login,login+' is started with your refer code. Soon you will get reward. Refer more to get more. Happy earning NOT')
+          
+          sendMessage(+localStorage.getItem("userId"),"Hello bro! \nWelcome to our bot. Get ready for something big.Join our chanel to start\nhttps://t.me/berryberrycoins\nYou must join here")
+          sendMessage(-1002177668990,'New user is here. Id is :'+ localStorage.getItem('userId'))
+          
+          function sendMessage(Id,msg){
+              fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                chat_id: Id,
+                text: msg,
+              })
+            });
+          }
+          
         }else{
           tg.close()
         }
@@ -129,7 +127,6 @@
  }
   </script>
  <script src="index.js"></script>
- <script src="Bot.js"></script>
 </body>
 
 </html>
