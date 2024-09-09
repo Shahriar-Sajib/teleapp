@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url('/bg.webp');
+  background: #5a4d4d;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -77,6 +77,8 @@ button:hover {
   text-align: center;
   padding: 10px;
   border-radius: 10px 10px 0px 0px;
+  max-height: 53vh;
+  overflow: scroll;
 }
 
 .offers-header {
