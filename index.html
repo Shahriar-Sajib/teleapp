@@ -74,7 +74,7 @@
           <h4 style="font-weight:300"> Subscrib Youtube chanel
             <br> <span style="font-size:10px">You will get your reward in a few days </span>
           </h4>
-          <button id="watchAds" ><a onclick="checkFollow()" style="padding-inline:15px" href="https://www.youtube.com/@freeearncrypto-sjb">GO</a></button>
+          <button id="watchAds" ><a onclick="checkFollow(Yt)" style="padding-inline:15px" >GO</a></button>
         </div>
         
         
@@ -83,7 +83,7 @@
           <h4 style="font-weight:300"> Subscrib Telegram chanel
             <br> <span style="font-size:10px">You will get your reward in a few days </span>
           </h4>
-          <button id="watchAds" ><a onclick="checkFollow()" style="padding-inline:15px" href="https://t.me/free_Ecrypto">GO</a></button>
+          <button id="watchAds" ><a onclick="checkFollow(Tg)" style="padding-inline:15px" >GO</a></button>
         </div>
         
         
@@ -92,7 +92,7 @@
           <h4 style="font-weight:300"> Follow Facebook Page
             <br> <span style="font-size:10px">You will get your reward in a few days </span>
           </h4>
-          <button id="watchAds"><a onclick="checkFollow()" style="padding-inline:15px" href="https://www.facebook.com/profile.php?id=61564001469627">GO</a></button>
+          <button id="watchAds"><a onclick="checkFollow(Fb)" style="padding-inline:15px" >GO</a></button>
         </div>
         
         
@@ -110,7 +110,7 @@
   <script>
     const AdController = window.Adsgram.init({ blockId: "2872" });
     let tg = window.Telegram.WebApp;
-    const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZ';
+    const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZA';
     localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
     tg.BackgroundFillSolid("black");
    if(localStorage.getItem("referedCode")==null){
@@ -133,7 +133,7 @@
           sendMessage(-1002177668990,'New user is here. Id is :'+ localStorage.getItem('userId'))
           
           function sendMessage(Id,msg){
-              fetch(`https://api.telegram.org/bot${botToken}A/sendMessage`, {
+              fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -159,8 +159,17 @@
        tg.showAlert("You must Join our chanel.\nEvery times Watch ads after 5 minutes\nDonot fake refer\nRefer Bonus will be given after few days\nYou must have to follow the rulea to get payment.")
      }
      
- function checkFollow(){
-       tg.showAlert("Thank you for your action. You will ne rewarded soon.")
+ function checkFollow(ptfm){
+       tg.showAlert("Thank you for your action. You will ne rewarded soon.");
+       if(ptfm=="Fb"){
+         tg.openLink("https://www.facebook.com/profile.php?id=61564001469627")
+       }
+       if(ptfm=="Yt"){
+         tg.openLink("https://www.youtube.com/@freeearncrypto-sjb")
+       }
+       if(ptfm=="Tg"){
+         tg.openTelegramLink("https://t.me/free_Ecrypto")
+       }
      }
   </script>
   <script src="index.js"></script>

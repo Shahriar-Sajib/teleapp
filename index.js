@@ -1,5 +1,5 @@
 if (localStorage.getItem("chances") == null) {
-  localStorage.setItem("chances", "5");
+  localStorage.setItem("chances", "0");
 }
 if (localStorage.getItem("notPoinst") == null) {
   localStorage.setItem("notPoinst", "0");
@@ -29,6 +29,7 @@ function claim() {
 }
 
 function watchAdsDaily() {
+  Toastify({text:"Ads is loading Please Wait🙏🙏🙏"}).showToast();
   //watchingDailyAds()
   AdController.show().then((result) => {
     // user watch ad till the end
@@ -43,6 +44,8 @@ function watchAdsDaily() {
 
 }
 function watchAdsSpin() {
+  Toastify({text:"Ads is loading Please Wait🙏🙏🙏"}).showToast();
+
  // watchingSpinAds()
  AdController.show().then((result) => {
     watchingSpinAds()
