@@ -108,9 +108,9 @@
   
   
   <script>
-    const AdController = window.Adsgram.init({ blockId: "2844" });
+    const AdController = window.Adsgram.init({ blockId: "2872" });
     let tg = window.Telegram.WebApp;
-    const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZA';
+    const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZ';
     localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
     tg.BackgroundFillSolid("black");
    if(localStorage.getItem("referedCode")==null){
@@ -133,7 +133,7 @@
           sendMessage(-1002177668990,'New user is here. Id is :'+ localStorage.getItem('userId'))
           
           function sendMessage(Id,msg){
-              fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+              fetch(`https://api.telegram.org/bot${botToken}A/sendMessage`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
