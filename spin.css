@@ -1,14 +1,12 @@
+*{
+  padding:0px;
+  margin: 0px;
+}
 body {
   height: 100vh;
   margin: 0px;
   padding: 0px;
-  display: flex;
-  background-image: url('/bg.webp');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  flex-direction: column;
-  padding-left: 35px;
+  background-color: gray;
   text-align: center;
 }
 
@@ -19,42 +17,33 @@ text {
 }
 
 #chart {
-  margin: 35px 35px 35px 0px;
-  padding-left: 15px;
-  padding-top: -15px;
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4.9px);
-  -webkit-backdrop-filter: blur(4.9px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-}
-
-#question h1 {
-  width: 250px;
-  transform: translate(20px, -30px);
-  color: ghostwhite;
-  font-weight: normal;
-  font-size: 23px;
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4.9px);
-  -webkit-backdrop-filter: blur(4.9px);
-}
-
-a, h3{
-  height: 30px;
   margin: 20px;
-  background: cyan;
-  width: 200px;
+  width: 260px;
+  padding-inline: 25px;
+  background-color: dimgray;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.points-info{
+  display: flex;
+  justify-content: space-between;
+  margin-inline: 10px;
+}
+
+.nmbr{
+  background: dimgray;
   padding: 10px;
-  color: purple;
+  color: ghostwhite;
   border-radius: 10px
 }
 
-a{
-  width: 100;
-  height: 10px;
-  text-decoration: none;
+.parents{
+  margin: 10px;
+  padding-inline: 15px;
+  display: flex;
+  justify-content: space-between;
+  background-color:dimgray;
+  padding: 2px;
+  border-radius: 4px;
 }

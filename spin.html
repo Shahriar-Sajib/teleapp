@@ -10,29 +10,79 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   
   <title>Spin Wheel</title>
-  <style>
-    h3:hover{
-      background-color: transparent;
-    }
-  </style>
 </head>
 
 <body>
-  <h3 onclick="backb()" style="width:50px;height:20px;margin:5px;margin-left:-30px">Back</h3>
+  <h1 onclick="backb()" style="margin:5px;margin-left:-30px">↩️</h1>
+  <small style="color:ghostwhite;margin-inline:10px;">***Everyday you will received ticket on your activities. Being active can be the way to get
+    extra tickets***</small>
   <div id="chart"></div>
-  <div class="se">
-    <h3 style="height:25px">You have <span id="notNumber">0</span>
-      NOT </h3>
-
-    
+  
+  <div class="points-info">
+    <p class="nmbr">You have <span id="notNumber">0</span>
+      NOT </p>
+    <p class="nmbr">You have <span id="ticketNumber">0</span>
+      Ticket </p>
   </div>
+  
+  <h2 style="color:ghostwhite;margin-top:15px;letter-spacing:-1px;font-weight:250">Watch Ads to get extra ticket</h2>
+  <div class="parents">
+    <icon style="font-size:1.85rem;">📀</icon>
+    <h4 style="padding:0px;margin:0px;font-weight:300;margin-top:6px">
+      Watch more <span id="adsLeft1">6</span> ads to get 3 tickets
+    </h4>
+    <button style="height:40px" onclick="watchAdsSpin()">Watch Ads</button>
+  </div>
+  
   <script>
+    ticketNumber.innerText=localStorage.getItem("chances");
+    adsLeft1.innerText = localStorage.getItem("spinAdsLeft");
+    
+    if (+localStorage.getItem("lastHours") != new Date().getHours()) {
+       localStorage.setItem("spinAdsLeft", "5");
+    }
+    
+    function watchAdsSpin() {
+      Toastify({text:"Ads  coming Please Wait🙏🙏🙏"}).showToast();
+   
+       AdController.show().then((result) => {
+          watchingSpinAds()
+        }).catch((result) => {
+          tg.showAlert("You must finished the ads😡😡")
+       // alert(JSON.stringify(result, null, 4));
+        })
+      }
+      
+      function watchingSpinAds() {
+        if (+localStorage.getItem("spinAdsLeft") == 1) {
+          let temp = +localStorage.getItem("chances") + 3;
+          localStorage.setItem("chances", temp);
+          ticketNumber.innerText = localStorage.getItem("chances");
+          localStorage.setItem("spinAdsLeft", "NaN");
+          localStorage.setItem("lastHours", new Date().getHours());
+          Toastify({ text: "Congratuletion! You have got 3 tickets😊😊😊" }).showToast();
+          tg.showAlert("Ooo yeah!!! 3 spins gotcha😌😌😌")
+        } else if (+localStorage.getItem("spinAdsLeft") > 0) {
+          Toastify({ text: "Ads is loding. Please wit🙂" }).showToast();
+          let temp2 = +localStorage.getItem("spinAdsLeft") - 1;
+          localStorage.setItem("spinAdsLeft", temp2);
+          // increasing the watched list
+          let temp4 = +localStorage.getItem("watchedSpinAds") + 1;
+          localStorage.setItem("watchedSpinAds", temp4);
+      
+          adsLeft1.innerText = localStorage.getItem("spinAdsLeft");
+        } else {
+          Toastify({ text: "Come back again at next Hours. Like if it is now 9 then back at 10" }).showToast();
+        }
+      }
+    
     function backb(){
       history.back()
     }
   </script>
   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="spin.js" type="text/javascript" charset="utf-8"></script>
+
 </body>
 
 </html>

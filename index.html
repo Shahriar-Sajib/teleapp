@@ -29,52 +29,52 @@
       <div class="coins">
         <p>My Coins</p>
         <h2 id="coinPoinst">0</h2>
-        <button onclick="claim()">Swap</button>
+        <button onclick="claim('coins')">Swap</button>
       </div>
       <div class="diamonds">
         <p>My NOT coins</p>
         <h2 id="notCoins">0</h2>
-        <button onclick="claim()">Withdraw</button>
+        <button onclick="claim('not')">Withdraw</button>
       </div>
     </div>
     
     <div class="offers">
       <div class="offers-header">
-        <p>Offers</p>
+        <p style="color:cyan">Life Time Offers</p>
       </div>
       <div class="offers-body">
-        <h3 class="title-for-tasks">watch ads to get reward</h3>
-        <div class="parents">
-          <icon style="font-size:1.85rem;">📀</icon>
-          <a href="spin.html">You have <span id="spinNumber">0</span> spin
-            <br> <span style="font-size:10px">Watch more <span id="adsLeft1">6</span> ads to get 3 spins </span>
-          </a>
-          <button id="watchAds" onclick="watchAdsSpin()">Watch Ads</button>
-        </div>
-        
         
         <div class="parents">
-          <icon style="font-size:1.85rem;">📀</icon>
-          <h4 style="font-weight:300">You have <span id="adsLeft">25</span> times left
-            <br> <span style="font-size:10px">watch daily 20 ads in every 5 minutes </span>
-          </h4>
-          <button id="watchAds" onclick="watchAdsDaily()">Watch Ads</button>
-        </div>
-        
-        <h3 class="title-for-tasks">Get Reward without ads</h3>
-        <div class="parents">
-          <a href="" id="get">coming...</a>
+          <p onclick="urlOpen('secretCode')">Get C.</p>
           <input type="text" id="code" placeholder="Enter the code">
-          <button style="padding:7px" id="check" onclick="checkCode()">Check</button>
+          <button style="padding:7px" onclick="checkCode('secretCode')">Check</button>
+        </div>
+        
+        <div class="parents">
+          <p onclick="urlOpen('videoCode')">Watch V.</p>
+          <input type="text" id="code" placeholder="Enter the code">
+          <button style="padding:7px" onclick="checkCode('videoCode')">Check</button>
+        </div>
+        
+        <div class="parents">
+          <p onclick="urlOpen('blogCode')">Read B.</p>
+          <input type="text" id="code" placeholder="Enter the code">
+          <button style="padding:7px" onclick="checkCode('blogCode')">Check</button>
+        </div>
+        
+        <div style="text-align:center;">
+          <button style="width:100%" onclick="claim('DailyBonus')">Claim Daily Bonuses</button>
         </div>
         
         
+        <!--        One time tasks                  -->
+        <p style="border-bottom:1px solid #FF6E40;margin:10px 0px;padding:7px 0px;color:cyan">One time tasks</p>
         <div class="parents">
           <icon style="font-size:1.85rem;">📀</icon>
           <h4 style="font-weight:300"> Subscrib Youtube chanel
             <br> <span style="font-size:10px">You will get your reward in a few days </span>
           </h4>
-          <button id="watchAds" ><a onclick="checkFollow('Yt')" style="padding-inline:15px" >GO</a></button>
+          <button class="watchAds"><a onclick="checkFollow('Yt')" style="padding-inline:15px">GO</a></button>
         </div>
         
         
@@ -83,7 +83,7 @@
           <h4 style="font-weight:300"> Subscrib Telegram chanel
             <br> <span style="font-size:10px">You will get your reward in a few days </span>
           </h4>
-          <button id="watchAds" ><a onclick="checkFollow('Tg')" style="padding-inline:15px" >GO</a></button>
+          <button class="watchAds"><a onclick="checkFollow('Tg')" style="padding-inline:15px">GO</a></button>
         </div>
         
         
@@ -92,27 +92,40 @@
           <h4 style="font-weight:300"> Follow Facebook Page
             <br> <span style="font-size:10px">You will get your reward in a few days </span>
           </h4>
-          <button id="watchAds"><a onclick="checkFollow('Fb')" style="padding-inline:15px" >GO</a></button>
+          <button class="watchAds"><a onclick="checkFollow('Fb')" style="padding-inline:15px">GO</a></button>
+        </div>
+        
+        <!--         Additional Tasks             -->
+        
+        <p style="border-bottom:1px solid #FF6E40;margin:10px 0px;padding:7px 0px;color:cyan">Get Additional Reward With
+          Ads</p>
+        <div class="parents">
+          <icon style="font-size:1.85rem;">📀</icon>
+          <h4 style="font-weight:300">You have <span id="adsLeft">0</span> times left
+            <br> <span style="font-size:10px">watch daily 20 ads in every 5 minutes </span>
+          </h4>
+          <button class="watchAds" onclick="watchAdsDaily()">Watch Ads</button>
         </div>
         
         
-        <p>More High-value offers are coming soon!</p>
+        <small>More High-value offers are coming soon!</small>
       </div>
     </div>
     
     <div class="footer">
       <button onclick="showInfo()">Rules</button>
-      <button><a href="spin.html">Do Spin</a></button>
+      <button><a style="text-decoration:none;" href="spin.html">Do Spin</a></button>
     </div>
   </div>
   
   
   <script>
-  //  const AdController = window.Adsgram.init({ blockId: "2872" });
+  //  localStorage.clear()
+    const AdController = window.Adsgram.init({ blockId: "2872" });
     let tg = window.Telegram.WebApp;
     const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZA';
     localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
-    tg.BackgroundFillSolid("black");
+    
    if(localStorage.getItem("referedCode")==null){
     Swal.fire({
       title: "Submit your Refer Code",
@@ -171,7 +184,22 @@
          tg.openTelegramLink("https://t.me/free_Ecrypto")
        }
      }
+     
+     
+ function urlOpen(url){
+       tg.showAlert("Thank you for your action. You will get 200 points for completing this task.");
+       if(url=="secretCode"){
+         tg.openLink("https://www.facebook.com/profile.php?id=61564001469627")
+       }
+       if(url=="videoCode"){
+         tg.openLink("https://www.youtube.com/@freeearncrypto-sjb")
+       }
+       if(url=="blog"){
+         tg.openTelegramLink("https://t.me/free_Ecrypto")
+       }
+     }
   </script>
+
   <script src="index.js"></script>
 </body>
 

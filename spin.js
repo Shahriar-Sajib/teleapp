@@ -1,9 +1,5 @@
 notNumber.innerText=localStorage.getItem("notPoinst");
 
-if(+localStorage.getItem("notPoinst")<0){
-  localStorage.setItem("notPoinst",0)
-}
-
 var padding = { top: 20, right: 40, bottom: 0, left: 0 },
   w = 300 - padding.left - padding.right,
   h = 300 - padding.top - padding.bottom,
@@ -99,13 +95,15 @@ arcs
 container.on("click", spin);
 function spin(d) {
   
-  if(localStorage.getItem("chances")==0){
+  if(+localStorage.getItem("chances")==0){
     container.on("spin",null);
     Toastify({text:"You do not have any chance left 😪"}).showToast();
     return;
   }else{
     let tamp = +localStorage.getItem("chances")-1;
     localStorage.setItem("chances",tamp);
+    
+    ticketNumber.innerText=tamp;
   }
   
   var ps = 360 / data.length,
@@ -132,9 +130,12 @@ function spin(d) {
       //populate question
       Toastify({text:"You have got "+data[picked].value+" NOT"}).showToast();
       let newPoints = +localStorage.getItem("notPoinst")+data[picked].value;
+      if(newPoints<0){
+        newPoints = 0;
+      }
       localStorage.setItem("notPoinst",newPoints);
       notNumber.innerText=localStorage.getItem("notPoinst");
-
+      
       oldrotation = rotation;
 
       /* Comment the below line for restrict spin to sngle time */
