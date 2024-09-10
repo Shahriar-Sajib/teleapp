@@ -120,8 +120,9 @@
   
   
   <script>
+    
   //  localStorage.clear()
-    const AdController = window.Adsgram.init({ blockId: "2872" });
+    const AdController = window.Adsgram.init({ blockId: "2918" });
     let tg = window.Telegram.WebApp;
     const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZA';
     localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
@@ -173,7 +174,7 @@
      }
      
  function checkFollow(ptfm){
-       tg.showAlert("Thank you for your action. You will ne rewarded soon.");
+       tg.showAlert("Thank you for your action. You will be rewarded very soon.Don't unfollow or unsubscrible during the verifying");
        if(ptfm=="Fb"){
          tg.openLink("https://www.facebook.com/profile.php?id=61564001469627")
        }
@@ -183,11 +184,13 @@
        if(ptfm=="Tg"){
          tg.openTelegramLink("https://t.me/free_Ecrypto")
        }
+       
      }
      
      
  function urlOpen(url){
-       tg.showAlert("Thank you for your action. You will get 200 points for completing this task.");
+       tg.showAlert("Thank you for your action.Tasks will be added soon. You will get 200 points for completing this task.");
+    
        if(url=="secretCode"){
          tg.openLink("https://www.facebook.com/profile.php?id=61564001469627")
        }
@@ -198,6 +201,7 @@
          tg.openTelegramLink("https://t.me/free_Ecrypto")
        }
      }
+     
   </script>
 
   <script src="index.js"></script>

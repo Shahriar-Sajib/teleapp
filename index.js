@@ -22,7 +22,16 @@ coinPoinst.innerText = localStorage.getItem("justPoinst");
 
 function claim(msg) {
   if(msg == "DailyBonus"){
-    tg.showAlert("You have got 1 NOT and 200 points as your daily claim")
+    if(+localStorage.getItem("dailyBonusChecked")!=new Date().getDay()){
+    tg.showAlert("You have got 200 points as your daily claim. Come again tomorrow for more.");
+    localStorage.setItem("dailyBonusChecked",new Date().getDay());
+    let temp = +localStorage.getItem("justPoinst") + 200;
+    localStorage.setItem("justPoinst", temp);
+    coinPoinst.innerText = localStorage.getItem("justPoinst");
+
+    }else{
+      tg.showAlert("You have already got today bonuses")
+    }
   }
   if(msg == "not" || msg == "coins"){
     Toastify({ text: "Coming on 1 October" }).showToast();
@@ -30,8 +39,7 @@ function claim(msg) {
 }
 
 function watchAdsDaily() {
-  Toastify({text:"Ads is coming soon Please Wait🙏🙏🙏"}).showToast();
-  watchingDailyAds()
+  Toastify({text:"Ads is loading soon Please Wait🙏🙏🙏"}).showToast();
   AdController.show().then((result) => {
     // user watch ad till the end
     // your code to reward user
