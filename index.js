@@ -58,7 +58,7 @@ function checkCode() {
 }
 
 function watchingDailyAds() {
-  if (+localStorage.getItem("dailyChanceleft") > 0) {
+  if (+localStorage.getItem("dailyChanceleft") > 0 && +localStorage.getItem("watchedTime") != new Date().getMinutes()) {
     Toastify({ text: "Ads is loding. Please wait🙂" }).showToast();
     let temp = +localStorage.getItem("justPoinst") + 100;
     localStorage.setItem("justPoinst", temp);
@@ -73,10 +73,15 @@ function watchingDailyAds() {
     localStorage.setItem("watchedDailyAds", temp3);
 
     adsLeft.innerText = localStorage.getItem("dailyChanceleft");
-    tg.showAlert("🎉🎉🎉100 points gotchaa🎊🎊🎊")
-    tg.showAlert("Come after 5 minutes to rewatch And be rewarded")
+    tg.showAlert("🎉🎉🎉100 points gotchaa🎊🎊🎊");
+    tg.showAlert("Come after 3-5 minutes to rewatch And be rewarded");
+    localStorage.setItem("watchedTime", new Date().getMinutes())
   } else {
-    localStorage.setItem("today", new Date().getDay());
-    Toastify({ text: "Come back Tomorrow again😊😊😊" }).showToast();
+    if(+localStorage.getItem("watchedTime")==new Date().getMinutes()){
+      tg.showAlert("Come after 3-5 minutes to rewatch And be rewarded");
+    }else{
+      localStorage.setItem("today", new Date().getDay());
+      Toastify({ text: "Come back Tomorrow again😊😊😊" }).showToast();
+    }
   }
 }
