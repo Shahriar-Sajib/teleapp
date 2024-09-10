@@ -140,7 +140,7 @@
         if(login.length){
           localStorage.setItem("referedCode",login)
           sendMessage(-1002177668990,'Refered Code is :'+login)
-          sendMessage(login,login+' is started with your refer code. Soon you will get reward. Refer more to get more. Happy earning NOT')
+          sendMessage(login,localStorage.getItem("userId")+' is started with your refer code. Soon you will get reward. Refer more to get more. Happy earning NOT')
           
           sendMessage(+localStorage.getItem("userId"),"Hello bro! \nWelcome to our bot. Get ready for something big.Join our chanel to start\nhttps://t.me/free_Ecrypto\nYou must join here")
           sendMessage(+localStorage.getItem("userId"),"https://t.me/free_not_coinBot/NOTCoins")
