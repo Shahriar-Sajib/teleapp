@@ -16,7 +16,7 @@
   <title>Spin Wheel</title>
 </head>
 
-<body>
+<body style="background:black">
   <h1 onclick="backb()" style="margin:5px;margin-left:-30px">↩️</h1>
   <small style="color:ghostwhite;margin-inline:10px;">***Everyday you will received ticket on your activities. Being active can be the way to get
     extra tickets***</small>
@@ -47,15 +47,19 @@
        localStorage.setItem("spinAdsLeft", "5");
     }
     
-    function watchAdsSpin() {
-      Toastify({text:"Ads is loading Please Wait🙏🙏🙏"}).showToast();
-   
+    function watchAdsSpin() {      
+   if(localStorage.getItem("spinLastMnt")!= new Date().getMinutes()){
+     Toastify({text:"Ads is loading Please Wait🙏🙏🙏"}).showToast();
        AdController.show().then((result) => {
-          watchingSpinAds()
+         watchingSpinAds()
+         localStorage.setItem("spinLastMnt", new Date().getMinutes())
         }).catch((result) => {
           tg.showAlert("You must finished the ads😡😡")
        // alert(JSON.stringify(result, null, 4));
         })
+    }else{
+        tg.showAlert("Come again 5 minutes later")
+      }
       }
       
       function watchingSpinAds() {
