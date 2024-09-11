@@ -34,22 +34,29 @@ function claim(msg) {
     }
   }
   if(msg == "not" || msg == "coins"){
-    Toastify({ text: "Coming on 1 October" }).showToast();
+    Toastify({ text: "Coming on October" }).showToast();
   }
 }
 
 function watchAdsDaily() {
+if(localStorage.getItem("watchedTime") != new Date().getMinutes()){
   Toastify({text:"Ads is loading soon Please Wait🙏🙏🙏"}).showToast();
   AdController.show().then((result) => {
     // user watch ad till the end
     // your code to reward user
     watchingDailyAds()
+    localStorage.setItem("today", new Date().getDay())
   }).catch((result) => {
     // user skipped video or get error during playing ad
     // do nothing or whatever you want
-    tg.alert("Hey you must finished the ads😡😡")
+    tg.showAlert("Hey you must finished the ads😡😡")
   //  alert(JSON.stringify(result, null, 4));
   })
+
+    }else{
+      tg.showAlert("Come again 5 minutes later")
+    }
+        
 
 }
 
