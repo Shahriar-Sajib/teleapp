@@ -73,7 +73,7 @@
           Toastify({ text: "Congratuletion! You have got 3 tickets😊😊😊" }).showToast();
           tg.showAlert("Ooo yeah!!! 3 spins gotcha😌😌😌")
         } else if (+localStorage.getItem("spinAdsLeft") > 0) {
-          Toastify({ text: "Ads is loding. Please wit🙂" }).showToast();
+         // Toastify({ text: "Ads is loding. Please wit🙂" }).showToast();
           let temp2 = +localStorage.getItem("spinAdsLeft") - 1;
           localStorage.setItem("spinAdsLeft", temp2);
           // increasing the watched list
