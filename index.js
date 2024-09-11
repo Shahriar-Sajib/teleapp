@@ -46,6 +46,7 @@ if(localStorage.getItem("watchedTime") != new Date().getMinutes()){
     // your code to reward user
     watchingDailyAds()
     localStorage.setItem("today", new Date().getDay())
+    localStorage.setItem("watchedTime", new Date().getMinutes())
   }).catch((result) => {
     // user skipped video or get error during playing ad
     // do nothing or whatever you want
@@ -53,9 +54,9 @@ if(localStorage.getItem("watchedTime") != new Date().getMinutes()){
   //  alert(JSON.stringify(result, null, 4));
   })
 
-    }else{
+}else{
       tg.showAlert("Come again 5 minutes later")
-    }
+   }
         
 
 }
@@ -65,8 +66,8 @@ function checkCode() {
 }
 
 function watchingDailyAds() {
-  if (+localStorage.getItem("dailyChanceleft") > 0 && +localStorage.getItem("watchedTime") != new Date().getMinutes()) {
-    Toastify({ text: "Ads is loding. Please wait🙂" }).showToast();
+  if (+localStorage.getItem("dailyChanceleft") > 0) {
+   // Toastify({ text: "Ads is loding. Please wait🙂" }).showToast();
     let temp = +localStorage.getItem("justPoinst") + 100;
     localStorage.setItem("justPoinst", temp);
     coinPoinst.innerText = localStorage.getItem("justPoinst");
@@ -82,13 +83,8 @@ function watchingDailyAds() {
     adsLeft.innerText = localStorage.getItem("dailyChanceleft");
     tg.showAlert("🎉🎉🎉100 points gotchaa🎊🎊🎊");
     tg.showAlert("Come after 3-5 minutes to rewatch And be rewarded");
-    localStorage.setItem("watchedTime", new Date().getMinutes())
   } else {
-    if(+localStorage.getItem("watchedTime")==new Date().getMinutes()){
-      tg.showAlert("Come after 3-5 minutes to rewatch And be rewarded");
-    }else{
       localStorage.setItem("today", new Date().getDay());
       Toastify({ text: "Come back Tomorrow again😊😊😊" }).showToast();
-    }
   }
 }
