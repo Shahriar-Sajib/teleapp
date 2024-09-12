@@ -1,6 +1,12 @@
 if (localStorage.getItem("chances") == null) {
   localStorage.setItem("chances", "5");
 }
+if (localStorage.getItem("chancesAddedDate") != new Date().getDay() ){
+  let tmp = +localStorage.getItem("chances")+5;
+  localStorage.setItem("chances", tmp);
+  tg.showAlert("You have got 5 chance as daily login");
+  localStorage.setItem("chancesAddedDate", new Date().getDay())
+}
 if (localStorage.getItem("notPoinst") == null) {
   localStorage.setItem("notPoinst", "0");
 }
