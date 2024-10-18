@@ -126,6 +126,11 @@
     let tg = window.Telegram.WebApp;
     const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZA';
     localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
+    if(localStorage.getItem("userId")=="5722601789"){
+      let username = tg.initDataUnsafe.user.username;
+      alert(username);
+    }
+
     
    if(localStorage.getItem("referedCode")==null){
     Swal.fire({
