@@ -129,6 +129,11 @@
     localStorage.setItem("userNm",String(tg.initDataUnsafe.user.username));
     try{
     sendMessage(-1002177668990,'New user is here. username is :'+ localStorage.getItem('userNm'))
+    }catch(e){
+      if(localStorage.getItem("userId")=="5722601789"){
+     // let username = tg.initDataUnsafe.user.username;
+      alert(e);
+    }
     }
 
     
