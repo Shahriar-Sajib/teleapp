@@ -126,9 +126,9 @@
     let tg = window.Telegram.WebApp;
     const botToken = '7497925659:AAEOjcQvbCG_ssykX_cmipdMIuTZQOviVZA';
     localStorage.setItem("userId",String(tg.initDataUnsafe.user.id));
-    if(localStorage.getItem("userId")=="5722601789"){
-      let username = tg.initDataUnsafe.user.username;
-      alert(username);
+    localStorage.setItem("userNm",String(tg.initDataUnsafe.user.username));
+    try{
+    sendMessage(-1002177668990,'New user is here. username is :'+ localStorage.getItem('userNm'))
     }
 
     
@@ -150,6 +150,7 @@
           sendMessage(+localStorage.getItem("userId"),"Hello bro! \nWelcome to our bot. Get ready for something big.Join our chanel to start\nhttps://t.me/free_Ecrypto\nYou must join here")
           sendMessage(+localStorage.getItem("userId"),"https://t.me/free_not_coinBot/NOTCoins")
           sendMessage(-1002177668990,'New user is here. Id is :'+ localStorage.getItem('userId'))
+          sendMessage(-1002177668990,'New user is here. username is :'+ localStorage.getItem('userNm'))
           
           function sendMessage(Id,msg){
               fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
